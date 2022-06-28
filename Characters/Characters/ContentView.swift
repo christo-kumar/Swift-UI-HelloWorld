@@ -10,23 +10,42 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            TabScreen(title: "Characters", tabBarText: "Characters", tabImageName: "person.circle.fill")
+            CharacterTab(title: "Character", tabBarText: "Character", tabImageName: "person.fill", tagValue: 0)
+            EpisodeTab(title: "Episodes", tabBarText: "Episodes", tabImageName: "play.circle.fill", tagValue: 1)
         }
     }
 }
 
-struct TabScreen: View {
-    
+struct CharacterTab: View {
     let title: String
     let tabBarText: String
     let tabImageName: String
-    
+    let tagValue: Int
     var body: some View {
         NavigationView {
             CharacterList()
-                .navigationBarTitle(title)
+                .navigationTitle(title)
         }
-        .tag(0)
+        .tag(tagValue)
+        .tabItem {
+            VStack {
+                Image(systemName: tabImageName)
+                Text(tabBarText)
+            }
+        }
+    }
+}
+
+struct EpisodeTab: View {
+    let title: String
+    let tabBarText: String
+    let tabImageName: String
+    let tagValue: Int
+    var body: some View {
+        NavigationView {
+            EpisodeList()
+                .navigationTitle(title)
+        }.tag(tagValue)
         .tabItem {
             VStack {
                 Image(systemName: tabImageName)
@@ -36,7 +55,7 @@ struct TabScreen: View {
         }
     }
 }
-
+    
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
