@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct CharacterList: View {
+    
+    @ObservedObject var viewModal = CharacterViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            //Search Bar
+            List{
+                ForEach(viewModal.characters, id: \.id) { character in
+                    ZStack {
+                        CharacterCell(image: character.image,
+                                      name: character.name,
+                                      status: character.status,
+                                      episodeCount: character.episode?.count)
+                            .frame(width: 300, height: 300)
+                    }
+                }
+            }
+        }.onAppear {
+            Task {
+                await viewModal.fetchData()
+            }
+        }
     }
 }
 

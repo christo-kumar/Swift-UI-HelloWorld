@@ -7,10 +7,10 @@
 
 import Foundation
 
-class CharacterViewModel {
+class CharacterViewModel : ObservableObject {
     
     private var networkService: NetworkServiceProtocol
-    private var characters: [WebCharacter]
+    @Published var characters: [WebCharacter]
     
     init(networkService: NetworkServiceProtocol = NetworkService()) {
         self.networkService = networkService
@@ -23,7 +23,10 @@ class CharacterViewModel {
         switch result {
         case .success( let characterResponse):
             if let characters = characterResponse.results {
-                self.characters = characters
+                DispatchQueue.main.async {
+                    self.characters = characters
+                }
+                
             }
         case .failure(let error):
             print(error)
