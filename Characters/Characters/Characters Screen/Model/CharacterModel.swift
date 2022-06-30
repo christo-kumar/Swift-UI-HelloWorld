@@ -38,20 +38,3 @@ struct Info : Decodable {
     var next : String?
     var prev: String?
 }
-
-struct AnimalResponse: Decodable {
-    let errorMessage: String
-    let animals: [Animal]
-    enum CodingKeys: String, CodingKey {
-        case animals = "data"
-        case errorMessage
-    }
-}
-protocol Specie {
-    var name: String {get set}
-    var image: String {get set}
-}
-struct Animal: Decodable, Specie {
-    var name: String
-    var image: String
-}
