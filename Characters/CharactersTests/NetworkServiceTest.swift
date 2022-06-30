@@ -19,7 +19,7 @@ class NetworkServiceTest: XCTestCase {
         let networkService = NetworkService()
         
         let exepectation = self.expectation(description: "Valid Request")
-        Task.init() {
+        Task {
             let result: Result<WebCharactersResponse, NetworkError> = await networkService.fetchDataFromApi(withUrl: urlString)
             switch result {
             case .success( let webCharacterResponse):

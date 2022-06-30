@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class CharacterViewModel : ObservableObject {
     
     private var networkService: NetworkServiceProtocol
@@ -23,10 +24,7 @@ class CharacterViewModel : ObservableObject {
         switch result {
         case .success( let characterResponse):
             if let characters = characterResponse.results {
-                DispatchQueue.main.async {
-                    self.characters = characters
-                }
-                
+                self.characters = characters
             }
         case .failure(let error):
             print(error)
