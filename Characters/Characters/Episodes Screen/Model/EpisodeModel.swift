@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Episode : Identifiable, Decodable, Hashable {
-    static func == (lhs: Episode, rhs: Episode) -> Bool {
+struct EpisodeModel : Identifiable, Decodable, Hashable {
+    static func == (lhs: EpisodeModel, rhs: EpisodeModel) -> Bool {
         return lhs.id == rhs.id
     }
     

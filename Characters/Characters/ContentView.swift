@@ -43,7 +43,7 @@ struct EpisodeTab: View {
     let tagValue: Int
     var body: some View {
         NavigationView {
-            EpisodeList()
+            Text("Hello")
                 .navigationTitle(title)
         }.tag(tagValue)
         .tabItem {
