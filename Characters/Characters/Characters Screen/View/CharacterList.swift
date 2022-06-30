@@ -10,12 +10,16 @@ import SwiftUI
 struct CharacterList: View {
     
     @ObservedObject var viewModal = CharacterViewModel()
+    @State private var searchText: String = ""
     
     var body: some View {
         VStack {
             //Search Bar
             List{
-                ForEach(viewModal.characters, id: \.id) { character in
+                ForEach(self.viewModal.characters.filter{ character in
+                    return self.searchText.isEmpty ? true : character.name!.lowercased().contains(self.searchText.lowercased()) 
+                }
+                        , id: \.id) { character in
                     ZStack {
                         CharacterCell(image: character.image,
                                       name: character.name,
@@ -24,7 +28,9 @@ struct CharacterList: View {
                             .frame(width: 300, height: 300)
                     }
                 }
-            }
+            }.searchable(text: $searchText,
+                         placement: .navigationBarDrawer(displayMode: .always),
+                         prompt: "Search")
         }.onAppear {
             Task {
                 await viewModal.fetchData()
