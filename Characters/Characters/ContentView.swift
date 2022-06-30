@@ -11,7 +11,8 @@ struct ContentView: View {
     var body: some View {
         TabView {
             CharacterTab(title: "Character", tabBarText: "Character", tabImageName: "person.fill", tagValue: 0)
-            EpisodeTab(title: "Episodes", tabBarText: "Episodes", tabImageName: "play.circle.fill", tagValue: 1)
+            EpisodeTab(title: "Advanced Search", tabBarText: "Search", tabImageName: "magnifyingglass.circle.fill", tagValue: 1)
+            CollectionTab(title: "Collection", tabBarText: "Collection", tabImageName: "person.fill", tagValue: 2)
         }
     }
 }
@@ -43,7 +44,7 @@ struct EpisodeTab: View {
     let tagValue: Int
     var body: some View {
         NavigationView {
-            Text("Hello")
+            AdvancedSearchView()
                 .navigationTitle(title)
         }.tag(tagValue)
         .tabItem {
@@ -55,6 +56,27 @@ struct EpisodeTab: View {
         }
     }
 }
+
+struct CollectionTab: View {
+    let title: String
+    let tabBarText: String
+    let tabImageName: String
+    let tagValue: Int
+    var body: some View {
+        NavigationView {
+            CharCollectionView()
+                .navigationTitle(title)
+        }.tag(tagValue)
+        .tabItem {
+            VStack {
+                Image(systemName: tabImageName)
+                    .foregroundColor(Color.gray)
+                Text(tabBarText)
+            }
+        }
+    }
+}
+
     
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
