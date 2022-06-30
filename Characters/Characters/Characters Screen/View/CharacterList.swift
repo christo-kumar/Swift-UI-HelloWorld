@@ -26,8 +26,12 @@ struct CharacterList: View {
                                       status: character.status,
                                       episodeCount: character.episode?.count)
                             .frame(width: 300, height: 300)
+                        NavigationLink(destination: CharacterDetail(character: character)) {
+                            EmptyView()
+                        }.buttonStyle(PlainButtonStyle())
                     }
                 }
+                
             }.searchable(text: $searchText,
                          placement: .navigationBarDrawer(displayMode: .always),
                          prompt: "Search")
