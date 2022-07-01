@@ -43,32 +43,34 @@ struct AdvancedSearchView: View {
     @State private var gender : String = ""
     
     var body: some View {
-        Form{
-            Section(header: Text("Basic Data")) {
-                TextField("Name",text: $name)
-            }
-            
-            Section(header: Text("Other data")) {
-                Picker (selection: $selectedStatus, label: Text("Status")) {
-                    ForEach(0 ..< statuses.count) {
-                        Text(self.statuses[$0].capitalized)
-                    }
-                }.pickerStyle(SegmentedPickerStyle()).padding()
+        NavigationView{
+            Form{
+                Section(header: Text("Basic Data")) {
+                    TextField("Name",text: $name)
+                }.navigationTitle("Advanced Search")
                 
-                Picker (selection: $selectedGender, label: Text("Gender")) {
-                    ForEach(0 ..< genders.count) {
-                        Text(self.genders[$0].capitalized)
-                    }
-                }.pickerStyle(SegmentedPickerStyle())
-                    .padding()
+                Section(header: Text("Other data")) {
+                    Picker (selection: $selectedStatus, label: Text("Status")) {
+                        ForEach(0 ..< statuses.count) {
+                            Text(self.statuses[$0].capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle()).padding()
+                    
+                    Picker (selection: $selectedGender, label: Text("Gender")) {
+                        ForEach(0 ..< genders.count) {
+                            Text(self.genders[$0].capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                        .padding()
+                }
+                
+                RoundedButton(name: name,
+                              status: statuses[selectedStatus],
+                              species: species,
+                              type: type,
+                              gender: genders[selectedGender])
             }
-            
-            RoundedButton(name: name,
-                          status: statuses[selectedStatus],
-                          species: species,
-                          type: type,
-                          gender: genders[selectedGender])
-    }
+        }
 }
 
 struct AdvancedSearchView_Previews: PreviewProvider {
