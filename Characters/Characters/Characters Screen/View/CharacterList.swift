@@ -13,8 +13,7 @@ struct CharacterList: View {
     @State private var searchText: String = ""
     
     var body: some View {
-        VStack {
-            //Search Bar
+        NavigationView {
             List{
                 ForEach(self.viewModal.characters.filter{ character in
                     return self.searchText.isEmpty ? true : character.name!.lowercased().contains(self.searchText.lowercased()) 
@@ -30,7 +29,7 @@ struct CharacterList: View {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle())
                     }
-                }
+                }.navigationTitle("Hello")
                 
             }.searchable(text: $searchText,
                          placement: .navigationBarDrawer(displayMode: .always),
