@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import UIKit
+
+let screenSize = UIScreen.main.bounds.size
 
 enum AppUrls {
     static let baseUrl = "https://rickandmortyapi.com/api/character/?page="
@@ -26,11 +29,12 @@ enum AppDimensions {
     static let cellCornerRadius = 10.0
     static let cellShadowRadius = 5.0
     
-    static let detailBackgroundViewHeight = 300.0
-    static let detailImageViewWidth = 200.0
-    static let detailImageViewHeight = 200.0
-    static let detailBottomOffset = -130.0
-    static let detailBottomPadding = -130.0
+    static let detailBackgroundViewHeight = screenSize.height/3
+    static let detailImageViewWidth = screenSize.width/2
+    static let detailImageViewHeight = screenSize.width/2
+    static let detailBottomOffset = -screenSize.width/3
+    static let detailBottomPadding = -screenSize.width/3
+    static let dataCardWidth = (screenSize.width * 10)/11
     
     static let detailBannerColorName = "BannerBackground"
     static let detailDataCardColorName = "DetailBackground"

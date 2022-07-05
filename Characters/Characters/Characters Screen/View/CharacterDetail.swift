@@ -17,11 +17,13 @@ struct CharacterDetail: View {
         ScrollView {
             VStack {
                 BackgroundView()
-                    .frame(height: 300)
+                    .frame(height: AppDimensions.detailBackgroundViewHeight)
                 CircleImage(url: character.image ?? "")
-                    .frame(width: 200, height: 200)
-                    .offset(y: -130)
-                    .padding(.bottom, -130)
+                    .frame(width: AppDimensions.detailImageViewWidth
+                            ,
+                           height: AppDimensions.detailImageViewWidth)
+                    .offset(y: AppDimensions.detailBottomOffset)
+                    .padding(.bottom, AppDimensions.detailBottomPadding)
                 VStack(alignment: .center) {
                     Text(character.name ?? "Unknown")
                         .font(.title)
@@ -44,8 +46,8 @@ struct CircleImage: View {
         WebImage(url: URL(string: url))
         .resizable()
         .clipShape(Circle())
-        .overlay(Circle().stroke(Color.gray,lineWidth: 4))
-        .shadow(radius: 10)
+        .overlay(Circle().stroke(Color.gray,lineWidth: AppDimensions.detailLineWidth))
+        .shadow(radius: AppDimensions.detailShadowRadius)
     }
 }
 
@@ -112,10 +114,11 @@ struct DataCard : View {
                     Text("\(character.episode?.count ?? 0)")
                         .font(.subheadline)
                 }.padding()
-            }.frame(width: 300, alignment: .top)
+            }.frame(width: AppDimensions.dataCardWidth,
+                    alignment: .top)
                 .background(Color("backgroundC"))
-                .cornerRadius(10)
-                .shadow(radius: 5)
+                .cornerRadius(AppDimensions.cellCornerRadius)
+                .shadow(radius: AppDimensions.cellShadowRadius)
                 .padding(.bottom)
     }
 }
