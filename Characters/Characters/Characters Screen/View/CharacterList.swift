@@ -25,6 +25,7 @@ struct CharacterList: View {
                                       name: character.name,
                                       status: character.status,
                                       episodeCount: character.episode?.count)
+                            .frame(maxWidth: .infinity)
                             .onAppear {
                                 if viewModal.shouldLoadData(currentIndex: character.id) {
                                     Task {
@@ -53,6 +54,13 @@ struct CharacterList: View {
 
 struct CharacterList_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterList()
+        Group {
+            CharacterList()
+                .preferredColorScheme(.light)
+            CharacterList()
+                .preferredColorScheme(.dark)
+.previewInterfaceOrientation(.landscapeLeft)
+        }
+        
     }
 }
