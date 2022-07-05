@@ -16,21 +16,21 @@ struct CharacterCell: View {
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: AppDimensions.standardSpacing) {
             WebImage(url: URL(string: self.image ?? ""))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipped()
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: AppDimensions.standardSpacing) {
                 Text(self.name ?? "Not nameable character").font(.title).bold()
                 Text(self.status ?? "Unknown").font(.subheadline)
                 Text("Appears in \(self.episodeCount ?? 0) episodes")
                     .font(.subheadline)
-            }.padding(.leading, 5)
+            }.padding(.leading, AppDimensions.standardSpacing)
         }.padding(.bottom)
             .background(Color.gray)
-            .cornerRadius(10)
-            .shadow(radius: 5)
+            .cornerRadius(AppDimensions.cellCornerRadius)
+            .shadow(radius: AppDimensions.cellShadowRadius)
     }
 }
 

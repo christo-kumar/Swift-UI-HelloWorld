@@ -19,7 +19,7 @@ class CharacterViewModel : ObservableObject {
     }
     
     func fetchData(forPage: Int) async {
-        let urlString = "https://rickandmortyapi.com/api/character/?page=\(forPage)"
+        let urlString = AppUrls.baseUrl + "\(forPage)"
         let result: Result<WebCharactersResponse, NetworkError> = await networkService.fetchDataFromApi(withUrl: urlString)
         switch result {
         case .success( let characterResponse):
