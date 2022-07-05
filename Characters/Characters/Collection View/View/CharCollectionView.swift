@@ -33,8 +33,7 @@ struct CharCollectionView: View {
                     }
                 }
         }.onAppear {
-            Task {
-                await viewModal.fetchData()
+            Task {                await viewModal.fetchData(forPage: 1)
             }
         }
     }

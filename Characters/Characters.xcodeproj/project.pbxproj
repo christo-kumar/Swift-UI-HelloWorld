@@ -227,11 +227,11 @@
 		6B867F39286B0C45005C90EA /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				6B57B930286B151F0021F707 /* Characters Screen */,
 				6B57B92B286B0E1A0021F707 /* Services */,
 				6B57B958286E0D170021F707 /* Collection View */,
 				6B57B955286E06A10021F707 /* Advanced Filter */,
 				6B57B93A286B45D10021F707 /* Episodes Screen */,
-				6B57B930286B151F0021F707 /* Characters Screen */,
 				6B867F3C286B0C45005C90EA /* ContentView.swift */,
 				6B867F3A286B0C45005C90EA /* CharactersApp.swift */,
 				6B867F3E286B0C47005C90EA /* Assets.xcassets */,

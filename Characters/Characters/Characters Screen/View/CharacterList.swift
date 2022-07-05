@@ -11,6 +11,7 @@ struct CharacterList: View {
     
     @ObservedObject var viewModal = CharacterViewModel()
     @State private var searchText: String = ""
+    @State private var currentPage = 1
     
     var body: some View {
         NavigationView {
@@ -25,6 +26,15 @@ struct CharacterList: View {
                                       status: character.status,
                                       episodeCount: character.episode?.count)
                             .frame(width: 300, height: 300)
+                            .onAppear {
+                                if viewModal.shouldLoadData(currentIndex: character.id) {
+                                    Task {
+                                        self.currentPage += 1
+                                        await viewModal.fetchData(forPage: self.currentPage)
+                                    }
+                                }
+                                
+                            }
                         NavigationLink(destination: CharacterDetail(character: character)) {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle())
@@ -36,7 +46,7 @@ struct CharacterList: View {
                          prompt: "Search")
         }.onAppear {
             Task {
-                await viewModal.fetchData()
+                await viewModal.fetchData(forPage: currentPage)
             }
         }
     }

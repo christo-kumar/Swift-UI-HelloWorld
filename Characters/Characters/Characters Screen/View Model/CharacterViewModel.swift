@@ -18,17 +18,21 @@ class CharacterViewModel : ObservableObject {
         self.characters = []
     }
     
-    func fetchData() async {
-        let urlString = "https://rickandmortyapi.com/api/character/?"
+    func fetchData(forPage: Int) async {
+        let urlString = "https://rickandmortyapi.com/api/character/?page=\(forPage)"
         let result: Result<WebCharactersResponse, NetworkError> = await networkService.fetchDataFromApi(withUrl: urlString)
         switch result {
         case .success( let characterResponse):
             if let characters = characterResponse.results {
-                self.characters = characters
+                self.characters.append(contentsOf: characters)
             }
         case .failure(let error):
             print(error)
         }
+    }
+    
+    func shouldLoadData(currentIndex: Int?) -> Bool {
+        return currentIndex == characters.count
     }
 }
 
