@@ -39,7 +39,7 @@ class ViewModalTest: XCTestCase {
     func test_networkService_forInvocation() {
         mockNetworkService.resetInovocation()
         Task {
-            await viewModal.fetchData()
+            await viewModal.fetchData(forPage: 1)
             XCTAssert(mockNetworkService.invokedTimes == 1)
         }
     }
@@ -50,7 +50,7 @@ class ViewModalTest: XCTestCase {
         let result: Result<WebCharactersResponse,NetworkError> = .success(mockResponse)
         mockNetworkService.expectedResult = result
         Task {
-            await viewModal.fetchData()
+            await viewModal.fetchData(forPage: 1)
             let characters = await viewModal.characters
             XCTAssertNil(characters)
             XCTAssert(characters.count > 0)
