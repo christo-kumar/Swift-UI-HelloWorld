@@ -25,7 +25,6 @@ struct CharacterList: View {
                                       name: character.name,
                                       status: character.status,
                                       episodeCount: character.episode?.count)
-                            .frame(width: 300, height: 300)
                             .onAppear {
                                 if viewModal.shouldLoadData(currentIndex: character.id) {
                                     Task {
@@ -33,15 +32,15 @@ struct CharacterList: View {
                                         await viewModal.fetchData(forPage: self.currentPage)
                                     }
                                 }
-                                
                             }
                         NavigationLink(destination: CharacterDetail(character: character)) {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle())
                     }
-                }.navigationTitle("Hello")
+                }
                 
-            }.searchable(text: $searchText,
+            }.navigationTitle("Hello")
+            .searchable(text: $searchText,
                          placement: .navigationBarDrawer(displayMode: .always),
                          prompt: "Search")
         }.onAppear {
