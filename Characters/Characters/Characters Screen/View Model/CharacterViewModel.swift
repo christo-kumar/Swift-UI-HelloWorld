@@ -11,11 +11,16 @@ import Foundation
 class CharacterViewModel : ObservableObject {
     
     private var networkService: NetworkServiceProtocol
+    private var repository: RepositoryProtocol
     @Published var characters: [WebCharacter]
+    @Published var charactersFromDb: [WebCharacter]
     
-    init(networkService: NetworkServiceProtocol = NetworkService()) {
+    init(networkService: NetworkServiceProtocol = NetworkService(),
+         repository: RepositoryProtocol = CharacterRepository<DataBaseService>()) {
         self.networkService = networkService
+        self.repository = repository
         self.characters = []
+        self.charactersFromDb = []
     }
     
     func fetchData(forPage: Int) async {
@@ -25,6 +30,7 @@ class CharacterViewModel : ObservableObject {
         case .success( let characterResponse):
             if let characters = characterResponse.results {
                 self.characters.append(contentsOf: characters)
+                insertData()
             }
         case .failure(let error):
             print(error)
@@ -33,6 +39,22 @@ class CharacterViewModel : ObservableObject {
     
     func shouldLoadData(currentIndex: Int?) -> Bool {
         return currentIndex == characters.count
+    }
+}
+
+extension CharacterViewModel {
+    
+    func insertData() {
+        for character in self.characters {
+            self.repository.createData(withData: character)
+        }
+    }
+    
+    func fetchDataFromDb() {
+        self.repository.retriveData()
+        if let moduleData = self.repository.getModuleData() as? [WebCharacter] {
+            self.charactersFromDb.append(contentsOf: moduleData)
+        }
     }
 }
 

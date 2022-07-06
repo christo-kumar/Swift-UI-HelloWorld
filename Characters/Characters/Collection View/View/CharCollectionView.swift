@@ -23,7 +23,7 @@ struct CharCollectionView: View {
                 alignment: .center,
                 spacing: 8,
                 pinnedViews: []) {
-                    ForEach(self.viewModal.characters) { character in
+                    ForEach(self.viewModal.charactersFromDb) { character in
                         ZStack {
                             WebImage(url: URL(string: character.image ?? "")).resizable().scaledToFit()
                             NavigationLink(destination: CharacterDetail(character: character)) {
@@ -33,8 +33,8 @@ struct CharCollectionView: View {
                     }
                 }
         }.onAppear {
-            Task {                await viewModal.fetchData(forPage: 1)
-            }
+            viewModal.fetchDataFromDb()
+            
         }
     }
 }

@@ -34,6 +34,8 @@
 		6B8D743228751A3700C94238 /* DBContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D743028751A3700C94238 /* DBContainer.xcdatamodeld */; };
 		6B8D74712875202900C94238 /* DatabaseSeriveProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D74702875202900C94238 /* DatabaseSeriveProtocol.swift */; };
 		6B8D7473287520D200C94238 /* DataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D7472287520D200C94238 /* DataBaseService.swift */; };
+		6B8D74752875486700C94238 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D74742875486700C94238 /* RepositoryProtocol.swift */; };
+		6B8D747728754DD400C94238 /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D747628754DD400C94238 /* CharacterRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		6B8D743128751A3700C94238 /* DBContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DBContainer.xcdatamodel; sourceTree = "<group>"; };
 		6B8D74702875202900C94238 /* DatabaseSeriveProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSeriveProtocol.swift; sourceTree = "<group>"; };
 		6B8D7472287520D200C94238 /* DataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseService.swift; sourceTree = "<group>"; };
+		6B8D74742875486700C94238 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		6B8D747628754DD400C94238 /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				6B57B936286B18620021F707 /* CharacterModel.swift */,
+				6B8D74742875486700C94238 /* RepositoryProtocol.swift */,
+				6B8D747628754DD400C94238 /* CharacterRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -461,9 +467,11 @@
 				6B57B939286B228A0021F707 /* CharacterList.swift in Sources */,
 				6B8D74712875202900C94238 /* DatabaseSeriveProtocol.swift in Sources */,
 				6B57B93E286B6C190021F707 /* CharacterCell.swift in Sources */,
+				6B8D747728754DD400C94238 /* CharacterRepository.swift in Sources */,
 				6B57B935286B160F0021F707 /* CharacterViewModel.swift in Sources */,
 				6B57B95B286E0D3E0021F707 /* CharCollectionView.swift in Sources */,
 				6B867F3D286B0C45005C90EA /* ContentView.swift in Sources */,
+				6B8D74752875486700C94238 /* RepositoryProtocol.swift in Sources */,
 				6B8D742F287519D100C94238 /* DBManager.swift in Sources */,
 				6B57B937286B18620021F707 /* CharacterModel.swift in Sources */,
 				6B57B92F286B0E500021F707 /* NetworkService.swift in Sources */,
