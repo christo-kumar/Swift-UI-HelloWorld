@@ -30,5 +30,11 @@ class DBManager {
         return container.viewContext
     }
     
-    
+    func saveContext() {
+        do {
+            try self.getContext().save()
+        } catch let error {
+            print("Unable to save data \(error)")
+        }
+    }
 }
