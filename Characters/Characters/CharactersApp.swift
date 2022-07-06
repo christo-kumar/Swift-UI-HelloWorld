@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct CharactersApp: App {
+    let dbManager = DBManager.sharedInstance
     var body: some Scene {
         WindowGroup {
             ContentView()

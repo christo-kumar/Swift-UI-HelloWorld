@@ -12,6 +12,7 @@ let screenSize = UIScreen.main.bounds.size
 
 enum AppUrls {
     static let baseUrl = "https://rickandmortyapi.com/api/character/?page="
+    static let containerName = "DBContainer"
 }
 
 enum AppLabelText {
