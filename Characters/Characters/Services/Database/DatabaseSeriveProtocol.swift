@@ -9,8 +9,16 @@ import Foundation
 import CoreData
 
 protocol DatabaseServiceProtocol {
-    func fetchData<T:NSManagedObject>(withName: String) -> [T]?
-    func deleteEntity<T:NSManagedObject>(entity:T)
-    func insertEntity<V:Decodable>(withDecodable: V)
-    func updateEntity<T:NSManagedObject, V: Decodable>(entity:T, with: V)
+    
+    associatedtype ManagedObject
+    associatedtype ModuleData
+
+    //Create
+    func insertEntity(withName: String) ->NSManagedObject
+    //Retrieve
+    func fetchData(withName: String) -> [ManagedObject]?
+    //Update
+    func updateEntity(entity:ManagedObject)
+    //Detele
+    func deleteEntity(entity:ManagedObject)
 }
